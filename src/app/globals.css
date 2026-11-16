@@ -1,26 +1,38 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 text-base font-semibold transition-colors outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-blue-700 text-white shadow-sm hover:bg-blue-800 active:bg-blue-900;
+  }
+  .btn-secondary {
+    @apply bg-white text-blue-800 ring-1 ring-blue-200 hover:bg-blue-50;
+  }
+  .btn-ghost {
+    @apply text-slate-700 ring-1 ring-slate-300 hover:bg-white;
+  }
+  .btn-icon {
+    @apply grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-xl font-semibold text-blue-800 ring-1 ring-blue-200 outline-none hover:bg-blue-50 focus-visible:ring-4 focus-visible:ring-blue-500/40 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .field {
+    /* 16px text prevents iOS from zooming the page on focus */
+    @apply min-h-12 rounded-xl border border-slate-300 bg-white px-4 text-base text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-500/20;
+  }
 }
